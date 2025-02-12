@@ -1,20 +1,20 @@
 <div class="max-w-md mx-auto mt-10 p-6 bg-white shadow-lg rounded-lg">
   <h1 class="text-2xl font-bold mb-4">Verificação de Conta</h1>
 
-  <p class="mb-4">Um código de verificação foi enviado para seu e-mail.</p>
+  <p class="mb-4">A verification code has been sent to your email.</p>
 
   <%= form_with url: confirm_verification_user_path(@user), local: true, class: "space-y-4" do |form| %>
     <div>
-      <%= form.label :verification_code, "Digite o Código", class: "block text-sm font-medium text-gray-700" %>
+      <%= form.label :verification_code, "Enter the Code", class: "block text-sm font-medium text-gray-700" %>
       <%= form.text_field :verification_code, class: "mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm" %>
     </div>
 
     <div>
-      <%= form.submit "Verificar Conta", class: "w-full flex justify-center py-2 px-4 border border-transparent rounded-md shadow-sm text-sm font-medium text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500" %>
+      <%= form.submit "Verify Account", class: "w-full flex justify-center py-2 px-4 border border-transparent rounded-md shadow-sm text-sm font-medium text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500" %>
     </div>
   <% end %>
-  <p id="resend-info">Você pode reenviar o código em <span id="timer">30</span> segundos.</p>
-  <%= button_to "Reenviar Código", resend_verification_code_user_path(@user), method: :post, id: "resend-button", disabled: true %>
+  <p id="resend-info">You can resend the code at <span id="timer">30</span> seconds.</p>
+  <%= button_to "Resend Code", resend_verification_code_user_path(@user), method: :post, id: "resend-button", disabled: true %>
 </div>
 
 <script>
@@ -30,7 +30,7 @@
       if (timer <= 0) {
         clearInterval(countdown);
         button.disabled = false;
-        document.getElementById("resend-info").textContent = "Não recebeu o código? Reenvie agora.";
+        document.getElementById("resend-info").textContent = "Didn't receive the code? Resend now.";
       }
     }, 1000);
   });
